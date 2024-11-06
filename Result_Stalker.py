@@ -161,4 +161,4 @@ def check_result():
         finally:
             browser.close()
 
-check_result()
+#check_result()
