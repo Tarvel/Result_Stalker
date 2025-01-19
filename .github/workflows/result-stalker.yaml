@@ -1,40 +1,40 @@
-name: Result_Stalker
+# name: Result_Stalker
 
-on:
-  schedule:
-    # Runs every day at 9:00 AM UTC (adjust according to your needs)
-    - cron: '0 * * * *'
+# on:
+#   schedule:
+#     # Runs every day at 9:00 AM UTC (adjust according to your needs)
+#     - cron: '0 * * * *'
 
-  workflow_dispatch:
+#   workflow_dispatch:
 
-jobs:
-  check-results:
-    runs-on: ubuntu-latest
+# jobs:
+#   check-results:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.x'
 
-      - name: Install dependencies
-        run: |
-          pip install playwright twilio python-dotenv
-          playwright install
+#       - name: Install dependencies
+#         run: |
+#           pip install playwright twilio python-dotenv
+#           playwright install
 
-      - name: Run Playwright script
-        env:
-          ACCT_SID: ${{ secrets.ACCT_SID }}
-          AUTH: ${{ secrets.AUTH }}
-          TWILIO_NUMBER: ${{ secrets.TWILIO_NUMBER }}
-          PHONE_NUMBER_1: ${{ secrets.PHONE_NUMBER_1 }}
-          PHONE_NUMBER_2: ${{ secrets.PHONE_NUMBER_2 }}
-          STUDENT_ID: ${{ secrets.STUDENT_ID }}
-          PORTAL_PASSWORD: ${{ secrets.PORTAL_PASSWORD }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
-        run: python Result_Stalker.py
+#       - name: Run Playwright script
+#         env:
+#           ACCT_SID: ${{ secrets.ACCT_SID }}
+#           AUTH: ${{ secrets.AUTH }}
+#           TWILIO_NUMBER: ${{ secrets.TWILIO_NUMBER }}
+#           PHONE_NUMBER_1: ${{ secrets.PHONE_NUMBER_1 }}
+#           PHONE_NUMBER_2: ${{ secrets.PHONE_NUMBER_2 }}
+#           STUDENT_ID: ${{ secrets.STUDENT_ID }}
+#           PORTAL_PASSWORD: ${{ secrets.PORTAL_PASSWORD }}
+#           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+#           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+#           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+#         run: python Result_Stalker.py
